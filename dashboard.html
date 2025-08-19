@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Visitantes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e8f6fd;
+        }
+        .device-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .device-list li {
+            background-color: #ecf0f1;
+            padding: 5px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📊 Dashboard de Visitantes</h1>
+    <p>Aquí se muestran los perfiles digitales de los usuarios que han visitado la página.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>ID de Usuario</th>
+                <th>Total de Visitas</th>
+                <th>Dispositivos Utilizados</th>
+                <th>Primer Visita</th>
+                <th>Última Visita</th>
+            </tr>
+        </thead>
+        <tbody id="dashboard-body">
+            <!-- Los datos se cargarán aquí -->
+        </tbody>
+    </table>
+</div>
+
+<!-- SDK de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+    // PASO 2: Pega aquí tu objeto de configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUZjzSGs66N4YIKksu-z-hX28nkLVAuig",
+  authDomain: "amado-de-dios.firebaseapp.com",
+  databaseURL: "https://amado-de-dios.firebaseio.com",
+  projectId: "amado-de-dios",
+  storageBucket: "amado-de-dios.appspot.com",
+  messagingSenderId: "172807138150",
+  appId: "1:172807138150:web:d22e34f2d811123f05f6a7"
+    };
+
+    // Inicializar Firebase
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const database = firebase.database();
+
+    // Cargar y mostrar los datos
+    const usersRef = database.ref('users');
+    usersRef.on('value', (snapshot) => {
+        const usersData = snapshot.val();
+        const dashboardBody = document.getElementById('dashboard-body');
+        dashboardBody.innerHTML = ''; // Limpiar la tabla
+
+        if (usersData) {
+            for (const userId in usersData) {
+                const userData = usersData[userId];
+                const visits = userData.visits || {};
+                const visitTimestamps = Object.values(visits).map(v => v.timestamp);
+                
+                const firstVisit = new Date(Math.min(...visitTimestamps)).toLocaleString();
+                const lastVisit = new Date(Math.max(...visitTimestamps)).toLocaleString();
+                const totalVisits = Object.keys(visits).length;
+
+                const devices = new Set();
+                Object.values(visits).forEach(v => devices.add(v.device));
+                
+                const deviceListItems = Array.from(devices).map(device => `<li>${device}</li>`).join('');
+
+                const row = `
+                    <tr>
+                        <td>${userId}</td>
+                        <td>${totalVisits}</td>
+                        <td><ul class="device-list">${deviceListItems}</ul></td>
+                        <td>${firstVisit}</td>
+                        <td>${lastVisit}</td>
+                    </tr>
+                `;
+                dashboardBody.innerHTML += row;
+            }
+        } else {
+            dashboardBody.innerHTML = '<tr><td colspan="5">Aún no hay datos de visitantes.</td></tr>';
+        }
+    });
+</script>
+
+</body>
+</html>

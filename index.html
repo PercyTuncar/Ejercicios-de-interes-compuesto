@@ -331,5 +331,58 @@
     </div>
 </div>
 
+<footer>
+    <p>Seguimiento de actividad de la página.</p>
+    <a href="dashboard.html" target="_blank">Ver Dashboard de Visitantes</a>
+</footer>
+
+<!-- SDK de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+    // PASO 2: Pega aquí tu objeto de configuración de Firebase
+    const firebaseConfig = {
+        // apiKey: "AIza...",
+        // authDomain: "...",
+        // databaseURL: "https://...",
+        // projectId: "...",
+        // storageBucket: "...",
+        // messagingSenderId: "...",
+        // appId: "..."
+    };
+
+    // Inicializar Firebase
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const database = firebase.database();
+
+    // Función para obtener o crear un ID de usuario único
+    function getOrCreateUserId() {
+        let userId = localStorage.getItem('visitorId');
+        if (!userId) {
+            userId = 'user_' + new Date().getTime() + '_' + Math.random().toString(36).substring(2, 10);
+            localStorage.setItem('visitorId', userId);
+        }
+        return userId;
+    }
+
+    // Función para registrar la visita
+    function trackVisit() {
+        const userId = getOrCreateUserId();
+        const userAgent = navigator.userAgent;
+        const visitRef = database.ref('users/' + userId + '/visits').push();
+        
+        visitRef.set({
+            timestamp: firebase.database.ServerValue.TIMESTAMP,
+            device: userAgent
+        });
+    }
+
+    // Ejecutar el seguimiento cuando la página cargue
+    window.onload = trackVisit;
+</script>
+
 </body>
 </html>
