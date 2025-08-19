@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solución Detallada de Interés Compuesto</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+        }
+        h3 {
+            font-size: 1.5em;
+            color: #3498db;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .enunciado {
+            background-color: #ecf0f1;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 5px;
+        }
+        .formula-box {
+            background-color: #e8f6fd;
+            border: 1px solid #aed6f1;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2em;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .data-item {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .answer {
+            background-color: #e8f8f5;
+            border-left: 5px solid #2ecc71;
+            padding: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .calculation-step {
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 3px solid #bdc3c7;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📈 Solución Detallada de Interés Compuesto 📈</h1>
+
+    <h3>Explicación Base del Interés Compuesto</h3>
+    <p>
+        Imagina que pones tu dinero en una cuenta de ahorros.
+    </p>
+    <ul>
+        <li><b>Interés simple:</b> El banco te da un dinerito extra basado <b>solo</b> en la cantidad con la que empezaste.</li>
+        <li><b>Interés compuesto:</b> ¡Esto es mejor! 🤩 El banco te da un dinerito extra, y al periodo siguiente, te vuelve a dar dinero extra, pero esta vez calculado sobre tu monto inicial <b>MÁS</b> los intereses que ya ganaste. ¡Ganas intereses sobre tus intereses!</li>
+    </ul>
+
+    <h3>La Fórmula Principal que Usaremos 🧪</h3>
+    <div class="formula-box">
+        $$M = C \cdot (1 + i)^n$$
+        <p style="text-align: left; font-size: 0.9em; margin-top: 15px;">
+            Donde: <br>
+            <code>M</code> = <b>Monto final</b>.<br>
+            <code>C</code> = <b>Capital inicial</b>.<br>
+            <code>i</code> = <b>Tasa de interés</b> por periodo (en decimal).<br>
+            <code>n</code> = <b>Número de periodos</b>.
+        </p>
+    </div>
+
+    <hr>
+
+    <h2>Ejercicio 1</h2>
+    <div class="enunciado">"Una persona ahorra $1000 en un banco que le ofrece una tasa de interés compuesto mensual del 2%. ¿Qué valor recibirá la persona si retira su dinero al cabo de 3 meses?"</div>
+    
+    <h3>Paso 1: Entender y ordenar los datos 🧐</h3>
+    <p>Imagina que <b>tú</b> eres esa persona.</p>
+    <ul>
+        <li><span class="data-item">Tu Capital inicial (C):</span> Pones $1000 en el banco. 💰</li>
+        <li><span class="data-item">La Tasa de interés (i):</span> Te dan 2% cada mes. En decimal: \(2 \div 100 = 0.02\).</li>
+        <li><span class="data-item">El Número de periodos (n):</span> Dejas tu dinero durante 3 meses.</li>
+    </ul>
+
+    <h3>Paso 2: Aplicar la fórmula y calcular paso a paso 🔢</h3>
+    <p>Usaremos la fórmula del Monto Final: \(M = C \cdot (1 + i)^n\).</p>
+    <div class="calculation-step">
+        <p><b>1. Reemplazamos los valores que encontramos:</b></p>
+        <p>\(M = \color{blue}{1000} \cdot (1 + \color{red}{0.02})^{\color{green}{3}}\)</p>
+        
+        <p><b>2. Resolvemos la suma dentro del paréntesis:</b></p>
+        <p>\(M = 1000 \cdot (\color{purple}{1.02})^3\)</p>
+        
+        <p><b>3. Calculamos la potencia (elevamos a 3):</b></p>
+        <p>\(M = 1000 \cdot \color{orange}{1.061208}\)</p>
+        
+        <p><b>4. Hacemos la multiplicación final:</b></p>
+        <p>\(M = 1061.208\)</p>
+    </div>
+    <div class="answer">
+        Respuesta: Al cabo de 3 meses, recibirás <b>$1061.21</b>.
+    </div>
+
+    <hr>
+
+    <h2>Ejercicio 2</h2>
+    <div class="enunciado">"Si depositamos $3000 en una cuenta que paga el 12% capitalizable trimestralmente, ¿cuánto dinero tendremos después de 9 meses?"</div>
+    
+    <h3>Paso 1: Entender y ordenar los datos 🧐</h3>
+    <ul>
+        <li><span class="data-item">Tu Capital inicial (C):</span> $3000. 💰</li>
+        <li><span class="data-item">La Tasa de interés (i):</span> Es 12% anual, pero se paga trimestralmente (4 veces al año). La tasa por periodo es: 
+        $$i = \frac{12\%}{4} = 3\% \text{ trimestral} \rightarrow 0.03$$
+        </li>
+        <li><span class="data-item">El Número de periodos (n):</span> En 9 meses hay 3 trimestres. Así que \(n = 3\).</li>
+    </ul>
+
+    <h3>Paso 2: Aplicar la fórmula y calcular paso a paso 🔢</h3>
+    <p>Usaremos la misma fórmula del Monto Final: \(M = C \cdot (1 + i)^n\).</p>
+    <div class="calculation-step">
+        <p><b>1. Reemplazamos los valores:</b></p>
+        <p>\(M = \color{blue}{3000} \cdot (1 + \color{red}{0.03})^{\color{green}{3}}\)</p>
+        
+        <p><b>2. Resolvemos la suma:</b></p>
+        <p>\(M = 3000 \cdot (\color{purple}{1.03})^3\)</p>
+
+        <p><b>3. Calculamos la potencia:</b></p>
+        <p>\(M = 3000 \cdot \color{orange}{1.092727}\)</p>
+
+        <p><b>4. Multiplicación final:</b></p>
+        <p>\(M = 3278.181\)</p>
+    </div>
+    <div class="answer">
+        Respuesta: Después de 9 meses, tendrás <b>$3278.18</b>.
+    </div>
+
+    <hr>
+    
+    <h2>Ejercicio 3</h2>
+    <div class="enunciado">"¿Cuánto dinero debo invertir en un banco que paga el 9% E.A.? Si después de 12 meses quiero retirar un total de $1000."</div>
+    
+    <h3>Paso 1: Entender los datos (pensando al revés) 🤔</h3>
+    <ul>
+        <li><span class="data-item">Tu Monto final (M):</span> Quieres tener $1000. 🎯</li>
+        <li><span class="data-item">La Tasa de interés (i):</span> Es 9% Anual. En decimal: \(0.09\).</li>
+        <li><span class="data-item">El Número de periodos (n):</span> 12 meses = 1 año, así que el interés se calcula 1 vez.</li>
+    </ul>
+    
+    <h3>Paso 2: Ajustar la fórmula y calcular paso a paso 🔢</h3>
+    <p>Para encontrar el Capital (C), usamos la fórmula despejada:</p>
+    <div class="formula-box">
+        $$C = \frac{M}{(1 + i)^n}$$
+    </div>
+    <div class="calculation-step">
+        <p><b>1. Reemplazamos los valores:</b></p>
+        <p>\(C = \frac{\color{blue}{1000}}{(1 + \color{red}{0.09})^{\color{green}{1}}}\)</p>
+        
+        <p><b>2. Resolvemos la operación de abajo:</b></p>
+        <p>\(C = \frac{1000}{\color{purple}{1.09}}\)</p>
+        
+        <p><b>3. Hacemos la división final:</b></p>
+        <p>\(C = 917.4311...\)</p>
+    </div>
+    <div class="answer">
+        Respuesta: Para alcanzar tu meta, debes invertir al principio <b>$917.43</b>.
+    </div>
+    
+    <hr>
+
+    <h2>Ejercicio 4</h2>
+    <div class="enunciado">"¿Cuál fue el capital que se invirtió durante 2 años al 15% anual capitalizable mensualmente, sabiendo que el monto final fue 200000?"</div>
+
+    <h3>Paso 1: Entender y ordenar los datos 🤔</h3>
+    <ul>
+        <li><span class="data-item">El Monto final (M):</span> 200,000. 🎯</li>
+        <li><span class="data-item">La Tasa de interés (i):</span> 15% anual, pagado mensualmente.
+        $$i = \frac{15\%}{12} = 1.25\% \text{ mensual} \rightarrow 0.0125$$
+        </li>
+        <li><span class="data-item">El Número de periodos (n):</span> 2 años x 12 meses/año = 24 meses.</li>
+    </ul>
+
+    <h3>Paso 2: Aplicar la fórmula ajustada y calcular paso a paso 🔢</h3>
+    <p>Nuevamente, usamos la fórmula del Capital: \(C = \frac{M}{(1 + i)^n}\).</p>
+    <div class="calculation-step">
+        <p><b>1. Reemplazamos los valores:</b></p>
+        <p>\(C = \frac{\color{blue}{200000}}{(1 + \color{red}{0.0125})^{\color{green}{24}}}\)</p>
+
+        <p><b>2. Resolvemos la suma y la potencia de abajo:</b></p>
+        <p>\(C = \frac{200000}{(\color{purple}{1.0125})^{24}} = \frac{200000}{\color{orange}{1.34735...}}\)</p>
+
+        <p><b>3. Hacemos la división final:</b></p>
+        <p>\(C = 148437.95\)</p>
+    </div>
+    <div class="answer">
+        Respuesta: El capital que se invirtió fue de <b>S/ 148,437.95</b>.
+    </div>
+
+    <hr>
+
+    <h2>Ejercicio 5</h2>
+    <div class="enunciado">"Juan deposita S/ 1000 en una entidad financiera durante un año, a una tasa de interés anual de 24% capitalizable mensualmente."</div>
+
+    <h3>Parte A: Hallar el interés generado 💸</h3>
+    <p><b>Paso 1:</b> Calculamos el Monto Final (M) usando \(M = C \cdot (1 + i)^n\).</p>
+    <div class="calculation-step">
+        <p>\(M = \color{blue}{1000} \cdot (1 + \color{red}{0.02})^{\color{green}{12}} = 1000 \cdot (1.02)^{12} = 1000 \cdot 1.26824 = 1268.24\)</p>
+    </div>
+    <p><b>Paso 2:</b> Calculamos la ganancia (el interés).</p>
+    <div class="calculation-step">
+        <p>\(Interés = M - C = 1268.24 - 1000 = 268.24\)</p>
+    </div>
+    <div class="answer">
+        Respuesta (A): El interés generado fue de <b>S/ 268.24</b>.
+    </div>
+    
+    <h3>Parte B: Calcular la Tasa Efectiva Anual (TEA) 📊</h3>
+    <p>La TEA te dice el porcentaje real que ganaste en el año. Usamos la fórmula:</p>
+    <div class="formula-box">
+        $$TEA = \left(1 + \frac{TN}{m}\right)^m - 1$$
+    </div>
+    <div class="calculation-step">
+        <p><b>1. Reemplazamos los valores (TN=0.24, m=12):</b></p>
+        <p>\(TEA = \left(1 + \frac{\color{red}{0.24}}{\color{green}{12}}\right)^{\color{green}{12}} - 1\)</p>
+        <p><b>2. Resolvemos la división y la suma:</b></p>
+        <p>\(TEA = (1 + 0.02)^{12} - 1 = (\color{purple}{1.02})^{12} - 1\)</p>
+        <p><b>3. Calculamos la potencia y la resta final:</b></p>
+        <p>\(TEA = \color{orange}{1.26824} - 1 = 0.26824\)</p>
+    </div>
+    <div class="answer">
+        Respuesta (B): La TEA es del <b>26.82%</b>.
+    </div>
+
+    <hr>
+
+    <h2>Ejercicio 6</h2>
+    <div class="enunciado">"Ana deposita S/ 2500 a una tasa nominal anual de 18%, capitalizable trimestralmente, durante 18 meses."</div>
+    
+    <h3>Parte A: Hallar el interés generado 💸</h3>
+     <p><b>Paso 1:</b> Calculamos el Monto Final (M). La tasa (i) es \(\frac{18\%}{4} = 4.5\% = 0.045\). El tiempo (n) es \(\frac{18}{3} = 6\) trimestres.</p>
+    <div class="calculation-step">
+         <p>\(M = \color{blue}{2500} \cdot (1 + \color{red}{0.045})^{\color{green}{6}} = 2500 \cdot (1.045)^6 = 2500 \cdot 1.30226 = 3255.65\)</p>
+    </div>
+    <p><b>Paso 2:</b> Calculamos la ganancia.</p>
+     <div class="calculation-step">
+         <p>\(Interés = 3255.65 - 2500 = 755.65\)</p>
+    </div>
+    <div class="answer">
+        Respuesta (A): El interés generado fue de <b>S/ 755.65</b>.
+    </div>
+
+    <h3>Parte B: Calcular la Tasa Efectiva Anual (TEA) 📊</h3>
+    <div class="calculation-step">
+        <p>\(TEA = \left(1 + \frac{\color{red}{0.18}}{\color{green}{4}}\right)^{\color{green}{4}} - 1 = (1.045)^4 - 1 = 1.1925 - 1 = 0.1925\)</p>
+    </div>
+    <div class="answer">
+        Respuesta (B): La TEA es del <b>19.25%</b>.
+    </div>
+    
+    <hr>
+    
+    <h2>Ejercicio 7</h2>
+    <div class="enunciado">"Luis deposita S/ 1800 a una tasa nominal de 20% capitalizable bimestralmente durante 10 meses."</div>
+
+    <h3>Parte A: Hallar el interés generado 💸</h3>
+    <p>La tasa (i) es \(\frac{20\%}{6} = 3.333...\%\) (\(0.20/6\)). El tiempo (n) es \(\frac{10}{2} = 5\) bimestres.</p>
+    <div class="calculation-step">
+         <p>\(M = \color{blue}{1800} \cdot \left(1 + \frac{\color{red}{0.20}}{\color{green}{6}}\right)^{\color{purple}{5}} = 1800 \cdot (1.0333...)^5 = 1800 \cdot 1.17757 = 2119.64\)</p>
+         <p>\(Interés = 2119.64 - 1800 = 319.64\)</p>
+    </div>
+    <div class="answer">
+        Respuesta (A): El interés generado es de <b>S/ 319.64</b>.
+    </div>
+
+    <h3>Parte B: Calcular la Tasa Efectiva Anual (TEA) 📊</h3>
+    <p>Aquí \(m = 6\) porque hay 6 bimestres en un año.</p>
+     <div class="calculation-step">
+        <p>\(TEA = \left(1 + \frac{\color{red}{0.20}}{\color{green}{6}}\right)^{\color{green}{6}} - 1 = (1.0333...)^6 - 1 = 1.2177 - 1 = 0.2177\)</p>
+    </div>
+    <div class="answer">
+        Respuesta (B): La TEA es del <b>21.77%</b>.
+    </div>
+</div>
+
+</body>
+</html>
