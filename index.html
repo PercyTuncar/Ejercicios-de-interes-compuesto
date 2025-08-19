@@ -381,7 +381,15 @@
     }
 
     // Ejecutar el seguimiento cuando la página cargue
-    window.onload = trackVisit;
+    window.onload = () => {
+        console.log("INDEX: Cargando script de seguimiento...");
+        if (!firebase.apps.length || !firebase.app().options.databaseURL) {
+            console.error("INDEX: Error - La configuración de Firebase está incompleta o es incorrecta. No se puede rastrear la visita.");
+            return;
+        }
+        console.log("INDEX: Configuración de Firebase detectada. Rastreando visita...");
+        trackVisit();
+    };
 </script>
 
 </body>
